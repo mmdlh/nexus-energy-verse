@@ -31,13 +31,13 @@ export default function MainLayout() {
       <div className="h-[2px] flow-line" />
 
       {/* Header */}
-      <header className="border-b border-primary/15 px-8 py-0 flex items-center gap-8 sticky top-0 z-50 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${bgMain})`, backgroundPositionY: '0%' }}>
+      <header className="relative border-b border-primary/15 px-8 py-0 flex items-center gap-8 sticky top-0 z-50 bg-cover bg-center bg-no-repeat overflow-hidden" style={{ backgroundImage: `url(${bgMain})`, backgroundPositionY: '0%' }}>
         {/* Header overlay for glass effect */}
         <div className="absolute inset-0 bg-background/60 backdrop-blur-xl" />
         {/* Subtle glow line at bottom */}
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
         {/* Logo & Title */}
-        <div className="flex items-center gap-4 shrink-0 mr-6 py-3">
+        <div className="relative z-10 flex items-center gap-4 shrink-0 mr-6 py-3">
           <div className="relative">
             <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary via-secondary to-accent flex items-center justify-center animate-pulse-glow shadow-lg shadow-primary/20">
               <Zap className="w-6 h-6 text-primary-foreground drop-shadow-lg" />
