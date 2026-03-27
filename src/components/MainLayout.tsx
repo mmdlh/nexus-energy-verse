@@ -30,31 +30,48 @@ export default function MainLayout() {
       <div className="h-[2px] flow-line" />
 
       {/* Header */}
-      <header className="glass border-b border-border/50 px-6 py-3 flex items-center gap-6 sticky top-0 z-50">
-        <div className="flex items-center gap-3 shrink-0 mr-4">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center animate-pulse-glow">
-            <Zap className="w-5 h-5 text-primary-foreground" />
+      <header className="glass border-b border-border/50 px-8 py-0 flex items-center gap-8 sticky top-0 z-50">
+        {/* Logo & Title */}
+        <div className="flex items-center gap-4 shrink-0 mr-6 py-3">
+          <div className="relative">
+            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary via-secondary to-accent flex items-center justify-center animate-pulse-glow shadow-lg shadow-primary/20">
+              <Zap className="w-6 h-6 text-primary-foreground drop-shadow-lg" />
+            </div>
+            {/* Orbiting dot */}
+            <div className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-energy-green animate-pulse shadow-md shadow-energy-green/50" />
           </div>
-          <h1 className="font-display text-lg font-bold tracking-wider gradient-text whitespace-nowrap">
-            分布式能源管理平台
-          </h1>
+          <div className="flex flex-col">
+            <h1 className="font-display text-xl font-extrabold tracking-widest gradient-text whitespace-nowrap leading-tight">
+              分布式能源管理平台
+            </h1>
+            <span className="text-[10px] text-muted-foreground tracking-[0.2em] uppercase">Distributed Energy Management System</span>
+          </div>
         </div>
 
-        <nav className="flex items-center gap-1.5 overflow-x-auto flex-1">
+        {/* Vertical separator */}
+        <div className="h-8 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent shrink-0" />
+
+        {/* Navigation */}
+        <nav className="flex items-center gap-1 overflow-x-auto flex-1 py-2 scrollbar-none" style={{ scrollbarWidth: 'none' }}>
           {navItems.map((item) => {
             const active = location.pathname === item.path;
             return (
               <RouterNavLink
                 key={item.path}
                 to={item.path}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all duration-200 ${
+                className={`group relative flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-300 ${
                   active
-                    ? "bg-primary/15 text-primary glow-border"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                    ? "bg-gradient-to-r from-primary/20 to-primary/5 text-primary shadow-[0_0_20px_hsl(190_90%_50%/0.12),inset_0_1px_0_hsl(190_90%_50%/0.15)] border border-primary/25"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/40 border border-transparent"
                 }`}
               >
-                <item.icon className="w-4 h-4" />
-                <span>{item.label}</span>
+                <item.icon className={`w-4 h-4 transition-all duration-300 ${active ? "drop-shadow-[0_0_6px_hsl(190_90%_50%/0.6)]" : "group-hover:scale-110"}`} />
+                <span className="relative">
+                  {item.label}
+                  {active && (
+                    <span className="absolute -bottom-1.5 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent rounded-full" />
+                  )}
+                </span>
               </RouterNavLink>
             );
           })}
