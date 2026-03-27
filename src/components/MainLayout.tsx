@@ -52,7 +52,7 @@ export default function MainLayout() {
         <div className="h-8 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent shrink-0" />
 
         {/* Navigation */}
-        <nav className="flex items-center gap-1 overflow-x-auto flex-1 py-2">
+        <nav className="flex items-center gap-1 overflow-x-auto flex-1 py-2 scrollbar-none" style={{ scrollbarWidth: 'none' }}>
           {navItems.map((item) => {
             const active = location.pathname === item.path;
             return (
