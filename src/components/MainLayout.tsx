@@ -1,4 +1,5 @@
 import { NavLink as RouterNavLink, Outlet, useLocation } from "react-router-dom";
+import bgMain from "@/assets/bg-main.jpg";
 import {
   LayoutDashboard,
   Zap,
@@ -25,7 +26,7 @@ export default function MainLayout() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen bg-background grid-bg">
+    <div className="min-h-screen bg-background bg-cover bg-center bg-fixed bg-no-repeat" style={{ backgroundImage: `url(${bgMain})` }}>
       {/* Flow line at very top */}
       <div className="h-[2px] flow-line" />
 
